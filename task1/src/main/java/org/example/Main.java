@@ -9,12 +9,14 @@ public class Main {
         int numero = leerNumero();
 
         ParImpar parImpar= new ParImpar(numero);
+
         parImpar.determinarParesImpares();
+
     }
 
     public static int leerNumero() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese un número entero:");
+        System.out.println("Introduzca un número:");
         int askNumber = scanner.nextInt();
         return askNumber;
     }
