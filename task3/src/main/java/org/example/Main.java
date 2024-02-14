@@ -1,19 +1,42 @@
 package org.example;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        int horasTrabajadas = preguntaDatosNumericos("Por favor, ingrese el TOTAL de horas trabajadas durante la semana: ");
 
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        int tarifa= preguntaDatosNumericos("Por favor, Ingrese la tarifa por hora: ");
+
+        System.out.println("El SUELDO mensual que le corresponde es de:  " + calculoSalarioSemanal(horasTrabajadas,tarifa) + "€");
+
     }
+
+    public static int calculoSalarioSemanal(int horasTrabajadas, int tarifa){
+
+        int sueldoSemanal;
+
+        int horasExtras= horasTrabajadas-40;
+
+        if (horasTrabajadas <= 40) {
+
+            sueldoSemanal = tarifa * horasTrabajadas;
+
+        } else {
+
+            sueldoSemanal = (int) ((40 * tarifa) + (horasExtras* (tarifa * 1.5)));
+
+        }
+        return sueldoSemanal;
+    }
+
+
+    public static int preguntaDatosNumericos(String mensaje) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(mensaje);
+        int numero = scanner.nextInt();
+        return numero;
+    }
+
 }
